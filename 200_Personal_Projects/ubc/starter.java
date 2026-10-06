@@ -32,9 +32,23 @@ class starter {
     static int clubsKept = 0;
     static int heartsKept = 0;
     static int differentSuitsDiscarded = 0;
-
     static String joker = "";
 
+    // Reward variables
+    static int twigs;
+    static int grassTuft;
+    static int cutStone;
+    static int rope;
+    static int gold;
+    static int redGem;
+    static int blueGem;
+    static int purpleGem;
+    static int banana;
+    static int bananaPop;
+    static int playingCard;
+    static int record;
+
+    // Jokers
     static String[] jokers = {
         "Wilson",
         "Willow",
@@ -172,13 +186,15 @@ class starter {
 
         // First discard
         System.out.println("");
-        System.out.println("Which card would you like to discard?");
-        System.out.println("Enter 1-5, or enter 0 to keep your hand.");
+        System.out.println("Which cards would you like to discard?");
+        System.out.println("Enter card numbers separated by spaces.");
+        System.out.println("Example: 1 3 5");
+        System.out.println("Enter 0 to keep your hand.");
 
-        String discardNum = sc.nextLine();
+        String discardInput = sc.nextLine();
 
-        if (!discardNum.equals("0")) {
-            discardCard(Integer.parseInt(discardNum));
+        if (!discardInput.equals("0")) {
+            discardMultipleCards(discardInput);
 
             System.out.println("");
             System.out.println("Your new hand:");
@@ -188,13 +204,15 @@ class starter {
         // Second discard
         System.out.println("");
         System.out.println("You have 1 discard remaining.");
-        System.out.println("Which card would you like to discard?");
-        System.out.println("Enter 1-5, or enter 0 to keep your hand.");
+        System.out.println("Which cards would you like to discard?");
+        System.out.println("Enter card numbers separated by spaces.");
+        System.out.println("Example: 1 3 5");
+        System.out.println("Enter 0 to keep your hand.");
 
-        discardNum = sc.nextLine();
+        discardInput = sc.nextLine();
 
-        if (!discardNum.equals("0")) {
-            discardCard(Integer.parseInt(discardNum));
+        if (!discardInput.equals("0")) {
+            discardMultipleCards(discardInput);
 
             System.out.println("");
             System.out.println("Your final hand:");
@@ -222,32 +240,110 @@ class starter {
         System.out.println("=================================");
 
         if (finalScore <= 119) {
+
             System.out.println(
-                "For that performance, you get "
+                "FOR THAT PERFORMANCE, YOU GET "
                 + rewards[badReward] + "!"
             );
         }
-        else if (finalScore <= 149) {
-            System.out.println("Reward: Playing Cards!");
+
+        else if (finalScore <= 149 && finalScore >= 120) {
+
+            System.out.println("YOU DID OK. HAVE THIS SUPPLIES.");
+            System.out.println("+1 Twig");
+            System.out.println("+1 Grass Tuft");
+
+            grassTuft++;
+            twigs++;
         }
-        else if (finalScore <= 199) {
-            System.out.println("Reward: Playing Cards!");
+
+        else if (finalScore <= 199 && finalScore >= 150) {
+
+            System.out.println("PRETTY GOOD, YOU GET SUPPLIES.");
+            System.out.println("+1 Cut Stone");
+            System.out.println("+1 Rope");
+
+            cutStone++;
+            rope++;
         }
-        else if (finalScore <= 399) {
-            System.out.println("Reward: 4 Playing Cards!");
+
+        else if (finalScore <= 399 && finalScore >= 200) {
+
+            System.out.println("GREAT! ENJOY BANANAS");
+            System.out.println("+2 Bananas");
+            System.out.println("ALSO HAVE THESE...");
+            System.out.println("+4 Playing Cards");
+
+            banana += 2;
+            playingCard += 4;
         }
-        else if (finalScore <= 599) {
-            System.out.println("Reward: 5 Playing Cards!");
+
+        else if (finalScore <= 599 && finalScore >= 400) {
+
+            System.out.println("WOW! HERE'S SOME BANANAS");
+            System.out.println("+2 Banana Pops");
+            System.out.println("ALSO HAVE THESE...");
+            System.out.println("+5 Playing Cards");
+
+            bananaPop += 2;
+            playingCard += 5;
         }
-        else if (finalScore <= 999) {
-            System.out.println("Reward: 7 Playing Cards + 1 Special Item!");
+
+        else if (finalScore <= 999 && finalScore >= 600) {
+
+            System.out.println("FANTASTIC! SOME GOLD FOR YOU");
+            System.out.println("+2 Gold");
+            System.out.println("ALSO HAVE THESE...");
+            System.out.println("+7 Playing Cards");
+
+            gold += 2;
+            playingCard += 7;
+            record++;
         }
-        else if (finalScore <= 1399) {
-            System.out.println("Reward: 8 Playing Cards + 1 Special Item!");
+
+        else if (finalScore <= 1399 && finalScore >= 1000) {
+
+            System.out.println("AMAZING! ENJOY YOUR GOLD!");
+            System.out.println("+8 Gold");
+            System.out.println("ALSO HAVE THESE...");
+            System.out.println("+7 Playing Cards");
+
+            gold += 8;
+            playingCard += 7;
+            record++;
         }
+
         else {
-            System.out.println("Reward: 12 Playing Cards + 3 Special Items!");
+
+            System.out.println("TRUE ROYALTY! YOU REALLY EARNED THIS TREASURE.");
+            System.out.println("+1 Red Gem");
+            System.out.println("+1 Blue Gem");
+            System.out.println("+1 Purple Gem");
+            System.out.println("ALSO HAVE THESE...");
+            System.out.println("+7 Playing Cards");
+
+            redGem++;
+            blueGem++;
+            purpleGem++;
+            playingCard += 7;
+            record++;
         }
+
+        System.out.println("ALL REWARDS CURRENTLY");
+        System.out.println("=================================");
+        System.out.println("Twigs: " + twigs);
+        System.out.println("Grass Tufts: " + grassTuft);
+        System.out.println("Cut Stone: " + cutStone);
+        System.out.println("Rope: " + rope);
+        System.out.println("Gold: " + gold);
+        System.out.println("Red Gems: " + redGem);
+        System.out.println("Blue Gems: " + blueGem);
+        System.out.println("Purple Gems: " + purpleGem);
+        System.out.println("Bananas: " + banana);
+        System.out.println("Banana Pops: " + bananaPop);
+        System.out.println("Playing Cards: " + playingCard);
+        System.out.println("Records/Balatro Remixes: " + record);
+        System.out.println("=================================");
     }
 
     static void resetGame() {
@@ -379,33 +475,67 @@ class starter {
         );
     }
 
+    // NEW: Allows multiple cards to be discarded at once
+    static void discardMultipleCards(String input) {
+
+        String[] cards = input.split(" ");
+
+        for (String cardNumber : cards) {
+
+            try {
+
+                int card = Integer.parseInt(cardNumber);
+
+                if (card >= 1 && card <= 5) {
+                    discardCard(card);
+                }
+                else {
+                    System.out.println(
+                        "Invalid card number: " + cardNumber
+                    );
+                }
+
+            }
+            catch (NumberFormatException e) {
+
+                System.out.println(
+                    "Invalid input: " + cardNumber
+                );
+            }
+        }
+    }
+
     static void discardCard(int card) {
 
         cardsDiscarded++;
 
         if (card == 1) {
-            applyDiscardJoker(firstCardValue, firstCardSuit);
 
+            applyDiscardJoker(firstCardValue, firstCardSuit);
             generateCard1();
         }
-        else if (card == 2) {
-            applyDiscardJoker(secondCardValue, secondCardSuit);
 
+        else if (card == 2) {
+
+            applyDiscardJoker(secondCardValue, secondCardSuit);
             generateCard2();
         }
-        else if (card == 3) {
-            applyDiscardJoker(thirdCardValue, thirdCardSuit);
 
+        else if (card == 3) {
+
+            applyDiscardJoker(thirdCardValue, thirdCardSuit);
             generateCard3();
         }
-        else if (card == 4) {
-            applyDiscardJoker(fourthCardValue, fourthCardSuit);
 
+        else if (card == 4) {
+
+            applyDiscardJoker(fourthCardValue, fourthCardSuit);
             generateCard4();
         }
-        else if (card == 5) {
-            applyDiscardJoker(fifthCardValue, fifthCardSuit);
 
+        else if (card == 5) {
+
+            applyDiscardJoker(fifthCardValue, fifthCardSuit);
             generateCard5();
         }
     }
@@ -463,38 +593,47 @@ class starter {
             chips += 100;
             mult += 8;
         }
+
         else if (handRank.equals("Straight Flush")) {
             chips += 100;
             mult += 8;
         }
+
         else if (handRank.equals("Four of a Kind")) {
             chips += 60;
             mult += 7;
         }
+
         else if (handRank.equals("Full House")) {
             chips += 40;
             mult += 4;
         }
+
         else if (handRank.equals("Flush")) {
             chips += 35;
             mult += 4;
         }
+
         else if (handRank.equals("Straight")) {
             chips += 30;
             mult += 4;
         }
+
         else if (handRank.equals("Three of a Kind")) {
             chips += 30;
             mult += 3;
         }
+
         else if (handRank.equals("Two Pair")) {
             chips += 20;
             mult += 2;
         }
+
         else if (handRank.equals("Pair")) {
             chips += 10;
             mult += 2;
         }
+
         else {
             chips += 5;
             mult += 1;
@@ -517,6 +656,7 @@ class starter {
         }
 
         if (joker.equals("Wolfgang")) {
+
             if (firstCardValue == 11 ||
                 firstCardValue == 12 ||
                 firstCardValue == 13) {
@@ -549,6 +689,7 @@ class starter {
         }
 
         if (joker.equals("Wendy")) {
+
             if (handRank.equals("High Card")) {
                 mult += 15;
             }
@@ -559,11 +700,13 @@ class starter {
         }
 
         if (joker.equals("Wickerbottom")) {
+
             int differentSuits = countDifferentSuits();
             chips += differentSuits * 10;
         }
 
         if (joker.equals("Woodie")) {
+
             if (handRank.equals("Pair") ||
                 handRank.equals("Two Pair") ||
                 handRank.equals("Three of a Kind") ||
@@ -580,12 +723,14 @@ class starter {
         }
 
         if (joker.equals("Webber")) {
+
             if (hasTwoOfSameValue()) {
                 chips += 25;
             }
         }
 
         if (joker.equals("Wormwood")) {
+
             if (hasHeart()) {
                 chips += 15;
             }
@@ -596,12 +741,14 @@ class starter {
         }
 
         if (joker.equals("Wortox")) {
+
             if (handRank.equals("Straight")) {
                 chips += 30;
             }
         }
 
         if (joker.equals("Wurt")) {
+
             if (isFlush()) {
                 mult += 25;
             }

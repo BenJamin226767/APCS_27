@@ -19,11 +19,18 @@ class starter {
 	}
 	// The goal of the second method is to add all the digits of a number up. Ex: 12345 has a total of 15.
 	public static int getDigitSum(int n){
-		n = (n%10)+(n/10)+((n%10)%10)+((n%10)/10);
+		return (n%10)+(n/10)+((n%10)%10)+((n%10)/10);
 	}
 	// The goal of the third method is to check if 3 numbers are consecutive. 15 16 17 are consecutive. It will print if they are or not.
 	// Assume that the first number is always the smallest and the third number is always the largest.
-	
+		public static void printIfConsecutive(int num1, int num2, int num3){
+			if(num1 == (num2-1) && num2 == (num3-1)){
+				System.out.println("These numbers are consecutive");
+			}
+			else{
+				System.out.println("These numbers are not consecutive");
+			}
+		}
 	public static void main(String args[]) {
 		System.out.println("----------------------------------------");
 		Scanner sc = new Scanner(System.in);

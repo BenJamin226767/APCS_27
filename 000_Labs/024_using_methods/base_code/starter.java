@@ -14,8 +14,8 @@ class starter {
 
 	public static void main(String args[]) throws InterruptedException {
 		// Write your code here!
-
-		
+			
+		}
 	}
 
 	// This method returns the local current time as a String
